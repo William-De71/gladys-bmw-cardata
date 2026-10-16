@@ -1,0 +1,16 @@
+Gladys BMW CarData integration
+Copyright 2026 William Deren
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+The integration follows the public BMW CarData documentation (Integration
+Guide 1.6 of 30/07/2026, customer API and device code flow swagger files). The
+practical details of the stream (TLS 1.3, one connection per account, value
+shapes) were learnt from the Home Assistant integrations kvanbiesen/bmw-cardata-ha
+(BSD 2-Clause) and JustChr/BavarianData (MIT); no file of them is included.
+test/fixtures/catalogue-descriptors.json lists the technical descriptor names
+of BMW's Telematics Data Catalogue, as exported by JustChr/BavarianData.
+
+BMW, MINI, ConnectedDrive and CarData are trademarks of Bayerische Motoren
+Werke AG. This community integration is not affiliated with, endorsed or
+sponsored by BMW Group.

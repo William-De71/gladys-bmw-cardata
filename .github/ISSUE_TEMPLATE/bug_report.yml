@@ -1,0 +1,50 @@
+name: Bug report
+description: Something does not work as described in the documentation.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a problem. Never paste your BMW client ID, a token or a full VIN: the logs of the integration hide them, but check before posting.
+  - type: input
+    id: gladys-version
+    attributes:
+      label: Gladys version
+      description: Settings → System.
+      placeholder: '5.1.1'
+    validations:
+      required: true
+  - type: input
+    id: integration-version
+    attributes:
+      label: Integration version
+      description: Integrations → BMW CarData, or Settings → Supervision.
+      placeholder: '0.1.0'
+    validations:
+      required: true
+  - type: input
+    id: car
+    attributes:
+      label: Car model and drivetrain
+      description: As shown in the MyBMW / MINI app. Say whether the stream is configured (Data selection in the CarData portal).
+      placeholder: 'BMW iX1 xDrive30 (electric), stream configured'
+
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened, and what you expected
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: |
+        Logs of the integration (Settings → Supervision): click **Diagnostic** in the integration configuration first, it writes an anonymized summary (stream, sign-in, quota, data received). In developer mode only, `DEBUG=gladys-integration-sdk` adds the SDK debug logs.
+      render: text

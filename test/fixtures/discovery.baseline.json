@@ -1,0 +1,559 @@
+{
+  "_comment": "Generated from version 0.1.0. Never update without a documented migration (see test/structure.test.js).",
+  "device": {
+    "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001",
+    "should_poll": false,
+    "params": ["BMW_VIN", "BMW_MODEL"],
+    "features": [
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:battery_level",
+        "category": "electrical-vehicle-battery",
+        "type": "battery-level",
+        "unit": "percent",
+        "min": 0,
+        "max": 100,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:electric_range",
+        "category": "electrical-vehicle-battery",
+        "type": "battery-range-estimate",
+        "unit": "km",
+        "min": 0,
+        "max": 1500,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:total_range",
+        "category": "distance-sensor",
+        "type": "decimal",
+        "unit": "km",
+        "min": 0,
+        "max": 3000,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:fuel_level",
+        "category": "level-sensor",
+        "type": "liquid-level-percent",
+        "unit": "percent",
+        "min": 0,
+        "max": 100,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:fuel_amount",
+        "category": "volume-sensor",
+        "type": "decimal",
+        "unit": "liter",
+        "min": 0,
+        "max": 200,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:plugged",
+        "category": "electrical-vehicle-charge",
+        "type": "plugged",
+        "min": 0,
+        "max": 1,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:charging",
+        "category": "electrical-vehicle-charge",
+        "type": "charge-on",
+        "min": 0,
+        "max": 1,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:charging_status",
+        "category": "text",
+        "type": "text",
+        "min": 0,
+        "max": 0,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:charge_power",
+        "category": "electrical-vehicle-charge",
+        "type": "charge-power",
+        "unit": "kilowatt",
+        "min": 0,
+        "max": 400,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:charge_target",
+        "category": "electrical-vehicle-charge",
+        "type": "target-charge-limit",
+        "unit": "percent",
+        "min": 0,
+        "max": 100,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:charge_time",
+        "category": "duration",
+        "type": "integer",
+        "unit": "minutes",
+        "min": 0,
+        "max": 5000,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:odometer",
+        "category": "electrical-vehicle-state",
+        "type": "odometer",
+        "unit": "km",
+        "min": 0,
+        "max": 2000000,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:lock",
+        "category": "electrical-vehicle-command",
+        "type": "lock",
+        "min": 0,
+        "max": 1,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:doors",
+        "category": "electrical-vehicle-state",
+        "type": "door-opened",
+        "min": 0,
+        "max": 1,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:trunk",
+        "category": "electrical-vehicle-state",
+        "type": "door-opened",
+        "min": 0,
+        "max": 1,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:hood",
+        "category": "electrical-vehicle-state",
+        "type": "door-opened",
+        "min": 0,
+        "max": 1,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:windows",
+        "category": "electrical-vehicle-state",
+        "type": "window-opened",
+        "min": 0,
+        "max": 1,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:sunroof",
+        "category": "electrical-vehicle-state",
+        "type": "window-opened",
+        "min": 0,
+        "max": 1,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:moving",
+        "category": "motion-sensor",
+        "type": "binary",
+        "min": 0,
+        "max": 1,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:climate",
+        "category": "electrical-vehicle-climate",
+        "type": "climate-on",
+        "min": 0,
+        "max": 1,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:tire_front_left",
+        "category": "electrical-vehicle-state",
+        "type": "tire-pressure",
+        "unit": "bar",
+        "min": 0,
+        "max": 6,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:tire_front_right",
+        "category": "electrical-vehicle-state",
+        "type": "tire-pressure",
+        "unit": "bar",
+        "min": 0,
+        "max": 6,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:tire_rear_left",
+        "category": "electrical-vehicle-state",
+        "type": "tire-pressure",
+        "unit": "bar",
+        "min": 0,
+        "max": 6,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:tire_rear_right",
+        "category": "electrical-vehicle-state",
+        "type": "tire-pressure",
+        "unit": "bar",
+        "min": 0,
+        "max": 6,
+        "read_only": true,
+        "has_feedback": false
+      },
+      {
+        "external_id": "ext:bmw-cardata:vehicle:WBA11AA0000000001:distance_home",
+        "category": "distance-sensor",
+        "type": "decimal",
+        "unit": "km",
+        "min": 0,
+        "max": 20000,
+        "read_only": true,
+        "has_feedback": false
+      }
+    ]
+  },
+  "manifest": {
+    "actions": ["test_connection", "refresh", "diagnostic", "disconnect"],
+    "config_schema": [
+      {
+        "key": "intro",
+        "type": "section"
+      },
+      {
+        "key": "client_id",
+        "type": "string"
+      },
+      {
+        "key": "account_intro",
+        "type": "section"
+      },
+      {
+        "key": "bmw_account",
+        "type": "account_link"
+      },
+      {
+        "key": "stream_intro",
+        "type": "section"
+      },
+      {
+        "key": "stream_host",
+        "type": "string"
+      },
+      {
+        "key": "stream_port",
+        "type": "number"
+      },
+      {
+        "key": "options_intro",
+        "type": "section"
+      },
+      {
+        "key": "api_refresh_hours",
+        "type": "number"
+      },
+      {
+        "key": "home_radius",
+        "type": "number"
+      },
+      {
+        "key": "language",
+        "type": "select"
+      }
+    ],
+    "scene_triggers": [
+      {
+        "key": "lock_changed",
+        "fields": [
+          {
+            "key": "vehicle",
+            "options": []
+          },
+          {
+            "key": "state",
+            "options": ["locked", "unlocked"]
+          }
+        ],
+        "variables": [
+          {
+            "key": "vehicle_name",
+            "type": "string"
+          },
+          {
+            "key": "state",
+            "type": "string"
+          },
+          {
+            "key": "summary",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "left_open",
+        "fields": [
+          {
+            "key": "vehicle",
+            "options": []
+          }
+        ],
+        "variables": [
+          {
+            "key": "vehicle_name",
+            "type": "string"
+          },
+          {
+            "key": "openings",
+            "type": "string"
+          },
+          {
+            "key": "summary",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "charging_changed",
+        "fields": [
+          {
+            "key": "vehicle",
+            "options": []
+          },
+          {
+            "key": "status",
+            "options": [
+              "charging",
+              "starting",
+              "waiting",
+              "paused",
+              "finished",
+              "interrupted",
+              "error",
+              "not_charging"
+            ]
+          }
+        ],
+        "variables": [
+          {
+            "key": "vehicle_name",
+            "type": "string"
+          },
+          {
+            "key": "status",
+            "type": "string"
+          },
+          {
+            "key": "status_label",
+            "type": "string"
+          },
+          {
+            "key": "battery_level",
+            "type": "number"
+          },
+          {
+            "key": "range_km",
+            "type": "number"
+          },
+          {
+            "key": "summary",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "plug_changed",
+        "fields": [
+          {
+            "key": "vehicle",
+            "options": []
+          },
+          {
+            "key": "state",
+            "options": ["plugged", "unplugged"]
+          }
+        ],
+        "variables": [
+          {
+            "key": "vehicle_name",
+            "type": "string"
+          },
+          {
+            "key": "state",
+            "type": "string"
+          },
+          {
+            "key": "battery_level",
+            "type": "number"
+          },
+          {
+            "key": "summary",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "moving_changed",
+        "fields": [
+          {
+            "key": "vehicle",
+            "options": []
+          },
+          {
+            "key": "state",
+            "options": ["started", "stopped"]
+          }
+        ],
+        "variables": [
+          {
+            "key": "vehicle_name",
+            "type": "string"
+          },
+          {
+            "key": "state",
+            "type": "string"
+          },
+          {
+            "key": "summary",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "home_changed",
+        "fields": [
+          {
+            "key": "vehicle",
+            "options": []
+          },
+          {
+            "key": "state",
+            "options": ["arrived", "left"]
+          }
+        ],
+        "variables": [
+          {
+            "key": "vehicle_name",
+            "type": "string"
+          },
+          {
+            "key": "state",
+            "type": "string"
+          },
+          {
+            "key": "distance_km",
+            "type": "number"
+          },
+          {
+            "key": "summary",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "authorization_expired",
+        "fields": [],
+        "variables": [
+          {
+            "key": "summary",
+            "type": "string"
+          }
+        ]
+      }
+    ],
+    "scene_actions": [
+      {
+        "key": "get_status",
+        "fields": ["vehicle", "refresh"],
+        "outputs": [
+          {
+            "key": "battery_level",
+            "type": "number"
+          },
+          {
+            "key": "range_km",
+            "type": "number"
+          },
+          {
+            "key": "fuel_level",
+            "type": "number"
+          },
+          {
+            "key": "charging_status",
+            "type": "string"
+          },
+          {
+            "key": "plugged",
+            "type": "boolean"
+          },
+          {
+            "key": "locked",
+            "type": "boolean"
+          },
+          {
+            "key": "open_list",
+            "type": "string"
+          },
+          {
+            "key": "at_home",
+            "type": "boolean"
+          },
+          {
+            "key": "distance_home_km",
+            "type": "number"
+          },
+          {
+            "key": "odometer_km",
+            "type": "number"
+          },
+          {
+            "key": "summary",
+            "type": "string"
+          }
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "key": "vehicle",
+        "settings": ["vehicle", "show_picture"]
+      },
+      {
+        "key": "account",
+        "settings": []
+      }
+    ]
+  }
+}

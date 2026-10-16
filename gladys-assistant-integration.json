@@ -1,0 +1,1342 @@
+{
+  "manifest_version": 1,
+  "type": "device",
+  "name": "BMW CarData",
+  "description": {
+    "en": "BMW and MINI cars: battery, range, charge, doors, lock, position, scenes (CarData).",
+    "fr": "Voitures BMW et MINI : batterie, autonomie, charge, portes, position, scènes (CarData).",
+    "de": "BMW- und MINI-Autos: Batterie, Reichweite, Laden, Türen, Position, Szenen (CarData).",
+    "es": "Coches BMW y MINI: batería, autonomía, carga, puertas, posición, escenas (CarData)."
+  },
+  "version": "0.1.0",
+  "docker_image": "ghcr.io/william-de71/gladys-bmw-cardata:0.1.0",
+  "gladys_version": ">=5.1.1",
+  "categories": ["energy", "security"],
+  "cover_image": "https://raw.githubusercontent.com/William-De71/gladys-bmw-cardata/main/cover.jpg",
+  "transports": ["cloud"],
+  "location": true,
+  "config_schema": [
+    {
+      "key": "intro",
+      "type": "section",
+      "label": {
+        "en": "BMW CarData client",
+        "fr": "Client BMW CarData",
+        "de": "BMW-CarData-Client",
+        "es": "Cliente de BMW CarData"
+      },
+      "description": {
+        "en": "In the MyBMW (or MINI) web portal, open your car → BMW CarData. Click « Create CarData client », tick BOTH « CarData API » and « CarData Stream », then copy the client ID here and save. Europe only; you must be the primary user of the car.",
+        "fr": "Dans le portail web MyBMW (ou MINI), ouvrez votre voiture → BMW CarData. Cliquez sur « Create CarData client », cochez LES DEUX abonnements « CarData API » et « CarData Stream », puis copiez l’identifiant client ici et enregistrez. Europe uniquement ; vous devez être l’utilisateur principal de la voiture.",
+        "de": "Öffne im MyBMW- (oder MINI-) Webportal dein Auto → BMW CarData. Klicke auf „CarData-Client erstellen“, aktiviere BEIDE Abos „CarData API“ und „CarData Stream“, kopiere dann die Client-ID hierher und speichere. Nur Europa; du musst Hauptnutzer des Autos sein.",
+        "es": "En el portal web de MyBMW (o MINI), abre tu coche → BMW CarData. Pulsa «Create CarData client», marca AMBAS suscripciones «CarData API» y «CarData Stream», copia aquí el ID de cliente y guarda. Solo Europa; debes ser el usuario principal del coche."
+      }
+    },
+    {
+      "key": "client_id",
+      "type": "string",
+      "label": {
+        "en": "CarData client ID",
+        "fr": "Identifiant client CarData",
+        "de": "CarData-Client-ID",
+        "es": "ID de cliente de CarData"
+      },
+      "description": {
+        "en": "The ID shown by the portal after « Create CarData client » (a UUID).",
+        "fr": "L’identifiant affiché par le portail après « Create CarData client » (un UUID).",
+        "de": "Die vom Portal nach „CarData-Client erstellen“ angezeigte ID (eine UUID).",
+        "es": "El ID que muestra el portal tras «Create CarData client» (un UUID)."
+      },
+      "placeholder": {
+        "en": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "fr": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "de": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "es": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      },
+      "required": true
+    },
+    {
+      "key": "account_intro",
+      "type": "section",
+      "label": {
+        "en": "Sign in",
+        "fr": "Connexion",
+        "de": "Anmeldung",
+        "es": "Inicio de sesión"
+      },
+      "description": {
+        "en": "Save first, then click Connect: a BMW page opens. Sign in, check that the code shown in the connection status of Gladys is the same, and approve. If BMW answers « access denied », retry in a private window and type the code by hand.",
+        "fr": "Enregistrez d’abord, puis cliquez sur Connecter : une page BMW s’ouvre. Connectez-vous, vérifiez que le code est celui affiché dans l’état de connexion de Gladys, et validez. Si BMW répond « access denied », réessayez dans une fenêtre privée en tapant le code à la main.",
+        "de": "Zuerst speichern, dann auf Verbinden klicken: Eine BMW-Seite öffnet sich. Melde dich an, prüfe, dass der Code dem im Verbindungsstatus von Gladys entspricht, und bestätige. Bei „access denied“ in einem privaten Fenster erneut versuchen und den Code von Hand eingeben.",
+        "es": "Guarda primero y pulsa Conectar: se abre una página de BMW. Inicia sesión, comprueba que el código es el mostrado en el estado de conexión de Gladys y apruébalo. Si BMW responde «access denied», reinténtalo en una ventana privada escribiendo el código a mano."
+      }
+    },
+    {
+      "key": "bmw_account",
+      "type": "account_link",
+      "label": {
+        "en": "BMW account",
+        "fr": "Compte BMW",
+        "de": "BMW-Konto",
+        "es": "Cuenta BMW"
+      }
+    },
+    {
+      "key": "stream_intro",
+      "type": "section",
+      "label": {
+        "en": "Stream (real time)",
+        "fr": "Flux (temps réel)",
+        "de": "Stream (Echtzeit)",
+        "es": "Flujo (tiempo real)"
+      },
+      "description": {
+        "en": "In the portal, click « Configure data stream » and tick the data you want (battery, doors, position…): BMW only streams what is ticked there. The host and port below are the ones the portal shows; the defaults fit most accounts. Only one stream connection per BMW account: stop any other CarData tool.",
+        "fr": "Dans le portail, cliquez sur « Configure data stream » et cochez les données voulues (batterie, portes, position…) : BMW ne diffuse que ce qui y est coché. L’hôte et le port ci-dessous sont ceux affichés par le portail ; les valeurs par défaut conviennent à la plupart des comptes. Une seule connexion au flux par compte BMW : arrêtez tout autre outil CarData.",
+        "de": "Klicke im Portal auf „Datenstream konfigurieren“ und wähle die gewünschten Daten (Batterie, Türen, Position…): BMW streamt nur, was dort ausgewählt ist. Host und Port unten sind die im Portal angezeigten; die Standardwerte passen für die meisten Konten. Nur eine Stream-Verbindung pro BMW-Konto: andere CarData-Tools beenden.",
+        "es": "En el portal, pulsa «Configure data stream» y marca los datos que quieras (batería, puertas, posición…): BMW solo transmite lo marcado allí. El host y el puerto de abajo son los que muestra el portal; los valores por defecto sirven para la mayoría de cuentas. Una sola conexión al flujo por cuenta BMW: detén cualquier otra herramienta CarData."
+      }
+    },
+    {
+      "key": "stream_host",
+      "type": "string",
+      "label": {
+        "en": "Stream host",
+        "fr": "Hôte du flux",
+        "de": "Stream-Host",
+        "es": "Host del flujo"
+      },
+      "placeholder": {
+        "en": "customer.streaming-cardata.bmwgroup.com",
+        "fr": "customer.streaming-cardata.bmwgroup.com",
+        "de": "customer.streaming-cardata.bmwgroup.com",
+        "es": "customer.streaming-cardata.bmwgroup.com"
+      },
+      "default": "customer.streaming-cardata.bmwgroup.com",
+      "required": false
+    },
+    {
+      "key": "stream_port",
+      "type": "number",
+      "label": {
+        "en": "Stream port",
+        "fr": "Port du flux",
+        "de": "Stream-Port",
+        "es": "Puerto del flujo"
+      },
+      "min": 1,
+      "max": 65535,
+      "default": 9000,
+      "required": false
+    },
+    {
+      "key": "options_intro",
+      "type": "section",
+      "label": {
+        "en": "Options",
+        "fr": "Options",
+        "de": "Optionen",
+        "es": "Opciones"
+      },
+      "description": {
+        "en": "BMW allows 50 API calls a day for the whole account (reset at 00:00 UTC). The stream costs none. The API fills what the stream does not send (door lock, data while the stream is down).",
+        "fr": "BMW autorise 50 appels API par jour pour tout le compte (remise à zéro à 00:00 UTC). Le flux n’en coûte aucun. L’API complète ce que le flux n’envoie pas (verrouillage des portes, données quand le flux est coupé).",
+        "de": "BMW erlaubt 50 API-Aufrufe pro Tag für das ganze Konto (Zurücksetzung um 00:00 UTC). Der Stream kostet keine. Die API ergänzt, was der Stream nicht sendet (Türverriegelung, Daten bei getrenntem Stream).",
+        "es": "BMW permite 50 llamadas API al día para toda la cuenta (se reinician a las 00:00 UTC). El flujo no consume ninguna. La API completa lo que el flujo no envía (cierre de puertas, datos con el flujo caído)."
+      }
+    },
+    {
+      "key": "api_refresh_hours",
+      "type": "number",
+      "label": {
+        "en": "API reading every (hours)",
+        "fr": "Lecture API toutes les (heures)",
+        "de": "API-Abruf alle (Stunden)",
+        "es": "Lectura API cada (horas)"
+      },
+      "description": {
+        "en": "0 = only on request. 4 h = 6 calls a day per car.",
+        "fr": "0 = seulement à la demande. 4 h = 6 appels par jour et par voiture.",
+        "de": "0 = nur auf Anfrage. 4 h = 6 Aufrufe pro Tag und Auto.",
+        "es": "0 = solo a petición. 4 h = 6 llamadas al día por coche."
+      },
+      "min": 0,
+      "max": 24,
+      "default": 4,
+      "required": false
+    },
+    {
+      "key": "home_radius",
+      "type": "number",
+      "label": {
+        "en": "Home radius (m)",
+        "fr": "Rayon du domicile (m)",
+        "de": "Heimradius (m)",
+        "es": "Radio de casa (m)"
+      },
+      "description": {
+        "en": "Around the houses of Gladys: the car is home within this distance.",
+        "fr": "Autour des maisons de Gladys : la voiture est au domicile en deçà de cette distance.",
+        "de": "Um die Häuser von Gladys: Innerhalb dieser Entfernung ist das Auto zu Hause.",
+        "es": "Alrededor de las casas de Gladys: el coche está en casa dentro de esta distancia."
+      },
+      "min": 50,
+      "max": 5000,
+      "default": 200,
+      "required": false
+    },
+    {
+      "key": "language",
+      "type": "select",
+      "label": {
+        "en": "Language of the texts",
+        "fr": "Langue des textes",
+        "de": "Sprache der Texte",
+        "es": "Idioma de los textos"
+      },
+      "description": {
+        "en": "Feature names and scene summaries. Automatic: the language of your dashboard, once a widget has been displayed.",
+        "fr": "Noms des fonctionnalités et résumés des scènes. Automatique : la langue de votre tableau de bord, dès qu’un widget a été affiché.",
+        "de": "Namen der Funktionen und Szenenzusammenfassungen. Automatisch: die Sprache deines Dashboards, sobald ein Widget angezeigt wurde.",
+        "es": "Nombres de las funciones y resúmenes de escenas. Automático: el idioma de tu panel, en cuanto se haya mostrado un widget."
+      },
+      "options": [
+        {
+          "value": "auto",
+          "label": {
+            "en": "Automatic",
+            "fr": "Automatique",
+            "de": "Automatisch",
+            "es": "Automático"
+          }
+        },
+        {
+          "value": "en",
+          "label": {
+            "en": "English",
+            "fr": "Anglais",
+            "de": "Englisch",
+            "es": "Inglés"
+          }
+        },
+        {
+          "value": "fr",
+          "label": {
+            "en": "French",
+            "fr": "Français",
+            "de": "Französisch",
+            "es": "Francés"
+          }
+        },
+        {
+          "value": "de",
+          "label": {
+            "en": "German",
+            "fr": "Allemand",
+            "de": "Deutsch",
+            "es": "Alemán"
+          }
+        },
+        {
+          "value": "es",
+          "label": {
+            "en": "Spanish",
+            "fr": "Espagnol",
+            "de": "Spanisch",
+            "es": "Español"
+          }
+        }
+      ],
+      "default": "auto",
+      "required": false
+    }
+  ],
+  "actions": [
+    {
+      "key": "test_connection",
+      "label": {
+        "en": "Test the connection",
+        "fr": "Tester la connexion",
+        "de": "Verbindung testen",
+        "es": "Probar la conexión"
+      },
+      "description": {
+        "en": "Shows the cars, the stream and the API calls left today (no API call, except the first time).",
+        "fr": "Affiche les voitures, le flux et les appels API restants (aucun appel API, sauf la première fois).",
+        "de": "Zeigt Autos, Stream und verbleibende API-Aufrufe (kein API-Aufruf, außer beim ersten Mal).",
+        "es": "Muestra los coches, el flujo y las llamadas API restantes (sin llamada API, salvo la primera vez)."
+      },
+      "timeout_seconds": 60
+    },
+    {
+      "key": "refresh",
+      "label": {
+        "en": "Read the cars now",
+        "fr": "Lire les voitures maintenant",
+        "de": "Autos jetzt abrufen",
+        "es": "Leer los coches ahora"
+      },
+      "description": {
+        "en": "Reads every car through the API: about 1 call per car, out of the 50 a day.",
+        "fr": "Lit chaque voiture par l’API : environ 1 appel par voiture, sur les 50 du jour.",
+        "de": "Liest jedes Auto über die API: etwa 1 Aufruf pro Auto, von 50 pro Tag.",
+        "es": "Lee cada coche por la API: alrededor de 1 llamada por coche, de las 50 diarias."
+      },
+      "timeout_seconds": 120
+    },
+    {
+      "key": "diagnostic",
+      "label": {
+        "en": "Diagnostic",
+        "fr": "Diagnostic",
+        "de": "Diagnose",
+        "es": "Diagnóstico"
+      },
+      "description": {
+        "en": "Writes an anonymized summary in the logs (Settings → Supervision), to join to a bug report.",
+        "fr": "Écrit un résumé anonymisé dans les journaux (Paramètres → Supervision), à joindre à un signalement.",
+        "de": "Schreibt eine anonymisierte Zusammenfassung ins Log (Einstellungen → Überwachung) für einen Fehlerbericht.",
+        "es": "Escribe un resumen anonimizado en los registros (Ajustes → Supervisión), para adjuntar a un informe."
+      },
+      "timeout_seconds": 10
+    },
+    {
+      "key": "disconnect",
+      "label": {
+        "en": "Disconnect",
+        "fr": "Se déconnecter",
+        "de": "Trennen",
+        "es": "Desconectar"
+      },
+      "description": {
+        "en": "Forgets the BMW tokens and the stored car data.",
+        "fr": "Oublie les jetons BMW et les données de voiture enregistrées.",
+        "de": "Vergisst die BMW-Tokens und die gespeicherten Autodaten.",
+        "es": "Olvida los tokens de BMW y los datos guardados del coche."
+      },
+      "timeout_seconds": 10
+    }
+  ],
+  "widgets": [
+    {
+      "key": "vehicle",
+      "label": {
+        "en": "BMW car",
+        "fr": "Voiture BMW",
+        "de": "BMW-Fahrzeug",
+        "es": "Coche BMW"
+      },
+      "description": {
+        "en": "The car: picture, battery or fuel, range, lock, openings, charge, tyres, map.",
+        "fr": "La voiture : photo, batterie ou carburant, autonomie, ouvrants, charge, pneus, carte.",
+        "de": "Das Auto: Bild, Batterie oder Kraftstoff, Reichweite, Öffnungen, Laden, Reifen, Karte.",
+        "es": "El coche: foto, batería o combustible, autonomía, aperturas, carga, neumáticos, mapa."
+      },
+      "icon": "truck",
+      "action_timeout_seconds": 60,
+      "settings": [
+        {
+          "key": "vehicle",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Car",
+            "fr": "Voiture",
+            "de": "Auto",
+            "es": "Coche"
+          },
+          "description": {
+            "en": "Leave empty for the first car.",
+            "fr": "Laissez vide pour la première voiture.",
+            "de": "Leer lassen für das erste Auto.",
+            "es": "Déjelo vacío para el primer coche."
+          },
+          "required": false
+        },
+        {
+          "key": "show_picture",
+          "type": "boolean",
+          "label": {
+            "en": "Show the picture of the car",
+            "fr": "Afficher la photo de la voiture",
+            "de": "Bild des Autos anzeigen",
+            "es": "Mostrar la foto del coche"
+          },
+          "description": {
+            "en": "Fetched once from BMW (1 API call).",
+            "fr": "Récupérée une fois chez BMW (1 appel API).",
+            "de": "Einmal bei BMW abgerufen (1 API-Aufruf).",
+            "es": "Se obtiene una vez de BMW (1 llamada API)."
+          },
+          "default": true,
+          "required": false
+        }
+      ]
+    },
+    {
+      "key": "account",
+      "label": {
+        "en": "BMW CarData",
+        "fr": "BMW CarData",
+        "de": "BMW CarData",
+        "es": "BMW CarData"
+      },
+      "description": {
+        "en": "API calls of the day out of 50, stream, sign-in, cars.",
+        "fr": "Appels API du jour sur 50, flux, connexion, voitures.",
+        "de": "API-Aufrufe des Tages von 50, Stream, Anmeldung, Autos.",
+        "es": "Llamadas API del día de 50, flujo, sesión, coches."
+      },
+      "icon": "activity"
+    }
+  ],
+  "scene_triggers": [
+    {
+      "key": "lock_changed",
+      "label": {
+        "en": "BMW: locked or unlocked",
+        "fr": "BMW : verrouillée ou déverrouillée",
+        "de": "BMW: verriegelt oder entriegelt",
+        "es": "BMW: bloqueado o desbloqueado"
+      },
+      "description": {
+        "en": "The car was locked or unlocked (from the stream, within seconds).",
+        "fr": "La voiture a été verrouillée ou déverrouillée (par le flux, en quelques secondes).",
+        "de": "Das Auto wurde ver- oder entriegelt (über den Stream, in Sekunden).",
+        "es": "El coche se ha bloqueado o desbloqueado (por el flujo, en segundos)."
+      },
+      "fields": [
+        {
+          "key": "vehicle",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Car",
+            "fr": "Voiture",
+            "de": "Auto",
+            "es": "Coche"
+          },
+          "description": {
+            "en": "Leave empty for any car.",
+            "fr": "Laissez vide pour toutes les voitures.",
+            "de": "Leer lassen für jedes Auto.",
+            "es": "Déjelo vacío para cualquier coche."
+          },
+          "required": false
+        },
+        {
+          "key": "state",
+          "type": "select",
+          "label": {
+            "en": "Event",
+            "fr": "Événement",
+            "de": "Ereignis",
+            "es": "Evento"
+          },
+          "description": {
+            "en": "Leave empty for both.",
+            "fr": "Laissez vide pour les deux.",
+            "de": "Leer lassen für beide.",
+            "es": "Déjelo vacío para ambos."
+          },
+          "options": [
+            {
+              "value": "locked",
+              "label": {
+                "en": "Locked",
+                "fr": "Verrouillée",
+                "de": "Verriegelt",
+                "es": "Bloqueado"
+              }
+            },
+            {
+              "value": "unlocked",
+              "label": {
+                "en": "Unlocked",
+                "fr": "Déverrouillée",
+                "de": "Entriegelt",
+                "es": "Desbloqueado"
+              }
+            }
+          ],
+          "required": false
+        }
+      ],
+      "variables": [
+        {
+          "key": "vehicle_name",
+          "type": "string",
+          "label": {
+            "en": "Car name",
+            "fr": "Nom de la voiture",
+            "de": "Name des Autos",
+            "es": "Nombre del coche"
+          }
+        },
+        {
+          "key": "state",
+          "type": "string",
+          "label": {
+            "en": "State",
+            "fr": "État",
+            "de": "Zustand",
+            "es": "Estado"
+          }
+        },
+        {
+          "key": "summary",
+          "type": "string",
+          "label": {
+            "en": "Summary",
+            "fr": "Résumé",
+            "de": "Zusammenfassung",
+            "es": "Resumen"
+          }
+        }
+      ]
+    },
+    {
+      "key": "left_open",
+      "label": {
+        "en": "BMW: locked but left open",
+        "fr": "BMW : verrouillée mais ouverte",
+        "de": "BMW: verriegelt, aber offen",
+        "es": "BMW: bloqueado pero abierto"
+      },
+      "description": {
+        "en": "The car is locked while a door, the trunk, the hood, a window or the sunroof is open.",
+        "fr": "La voiture est verrouillée alors qu’une porte, le coffre, le capot, une vitre ou le toit ouvrant est ouvert.",
+        "de": "Das Auto ist verriegelt, aber eine Tür, der Kofferraum, die Haube, ein Fenster oder das Schiebedach ist offen.",
+        "es": "El coche está bloqueado con una puerta, el maletero, el capó, una ventanilla o el techo abierto."
+      },
+      "fields": [
+        {
+          "key": "vehicle",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Car",
+            "fr": "Voiture",
+            "de": "Auto",
+            "es": "Coche"
+          },
+          "description": {
+            "en": "Leave empty for any car.",
+            "fr": "Laissez vide pour toutes les voitures.",
+            "de": "Leer lassen für jedes Auto.",
+            "es": "Déjelo vacío para cualquier coche."
+          },
+          "required": false
+        }
+      ],
+      "variables": [
+        {
+          "key": "vehicle_name",
+          "type": "string",
+          "label": {
+            "en": "Car name",
+            "fr": "Nom de la voiture",
+            "de": "Name des Autos",
+            "es": "Nombre del coche"
+          }
+        },
+        {
+          "key": "openings",
+          "type": "string",
+          "label": {
+            "en": "What is open",
+            "fr": "Ce qui est ouvert",
+            "de": "Was offen ist",
+            "es": "Qué está abierto"
+          }
+        },
+        {
+          "key": "summary",
+          "type": "string",
+          "label": {
+            "en": "Summary",
+            "fr": "Résumé",
+            "de": "Zusammenfassung",
+            "es": "Resumen"
+          }
+        }
+      ]
+    },
+    {
+      "key": "charging_changed",
+      "label": {
+        "en": "BMW: charging status changed",
+        "fr": "BMW : état de charge modifié",
+        "de": "BMW: Ladestatus geändert",
+        "es": "BMW: estado de carga cambiado"
+      },
+      "description": {
+        "en": "The charge started, paused, finished, failed… (electric and plug-in hybrid cars).",
+        "fr": "La charge a démarré, est en pause, terminée, en erreur… (voitures électriques et hybrides rechargeables).",
+        "de": "Das Laden hat begonnen, pausiert, ist beendet, fehlgeschlagen… (Elektro- und Plug-in-Hybride).",
+        "es": "La carga ha empezado, está en pausa, ha terminado, ha fallado… (eléctricos e híbridos enchufables)."
+      },
+      "fields": [
+        {
+          "key": "vehicle",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Car",
+            "fr": "Voiture",
+            "de": "Auto",
+            "es": "Coche"
+          },
+          "description": {
+            "en": "Leave empty for any car.",
+            "fr": "Laissez vide pour toutes les voitures.",
+            "de": "Leer lassen für jedes Auto.",
+            "es": "Déjelo vacío para cualquier coche."
+          },
+          "required": false
+        },
+        {
+          "key": "status",
+          "type": "select",
+          "label": {
+            "en": "New status",
+            "fr": "Nouvel état",
+            "de": "Neuer Status",
+            "es": "Nuevo estado"
+          },
+          "description": {
+            "en": "Leave empty for any change.",
+            "fr": "Laissez vide pour tout changement.",
+            "de": "Leer lassen für jede Änderung.",
+            "es": "Déjelo vacío para cualquier cambio."
+          },
+          "required": false,
+          "options": [
+            {
+              "value": "charging",
+              "label": {
+                "en": "Charging",
+                "fr": "En charge",
+                "de": "Lädt",
+                "es": "Cargando"
+              }
+            },
+            {
+              "value": "starting",
+              "label": {
+                "en": "Starting",
+                "fr": "Démarrage",
+                "de": "Wird gestartet",
+                "es": "Iniciando"
+              }
+            },
+            {
+              "value": "waiting",
+              "label": {
+                "en": "Waiting to charge",
+                "fr": "En attente de charge",
+                "de": "Wartet auf Laden",
+                "es": "Esperando la carga"
+              }
+            },
+            {
+              "value": "paused",
+              "label": {
+                "en": "Paused",
+                "fr": "En pause",
+                "de": "Pausiert",
+                "es": "En pausa"
+              }
+            },
+            {
+              "value": "finished",
+              "label": {
+                "en": "Finished",
+                "fr": "Terminée",
+                "de": "Beendet",
+                "es": "Terminada"
+              }
+            },
+            {
+              "value": "interrupted",
+              "label": {
+                "en": "Interrupted",
+                "fr": "Interrompue",
+                "de": "Unterbrochen",
+                "es": "Interrumpida"
+              }
+            },
+            {
+              "value": "error",
+              "label": {
+                "en": "Error",
+                "fr": "Erreur",
+                "de": "Fehler",
+                "es": "Error"
+              }
+            },
+            {
+              "value": "not_charging",
+              "label": {
+                "en": "Not charging",
+                "fr": "Pas en charge",
+                "de": "Lädt nicht",
+                "es": "Sin cargar"
+              }
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "key": "vehicle_name",
+          "type": "string",
+          "label": {
+            "en": "Car name",
+            "fr": "Nom de la voiture",
+            "de": "Name des Autos",
+            "es": "Nombre del coche"
+          }
+        },
+        {
+          "key": "status",
+          "type": "string",
+          "label": {
+            "en": "Status (code)",
+            "fr": "État (code)",
+            "de": "Status (Code)",
+            "es": "Estado (código)"
+          }
+        },
+        {
+          "key": "status_label",
+          "type": "string",
+          "label": {
+            "en": "Status",
+            "fr": "État",
+            "de": "Status",
+            "es": "Estado"
+          }
+        },
+        {
+          "key": "battery_level",
+          "type": "number",
+          "label": {
+            "en": "Battery (%)",
+            "fr": "Batterie (%)",
+            "de": "Batterie (%)",
+            "es": "Batería (%)"
+          }
+        },
+        {
+          "key": "range_km",
+          "type": "number",
+          "label": {
+            "en": "Electric range (km)",
+            "fr": "Autonomie électrique (km)",
+            "de": "Elektrische Reichweite (km)",
+            "es": "Autonomía eléctrica (km)"
+          }
+        },
+        {
+          "key": "summary",
+          "type": "string",
+          "label": {
+            "en": "Summary",
+            "fr": "Résumé",
+            "de": "Zusammenfassung",
+            "es": "Resumen"
+          }
+        }
+      ]
+    },
+    {
+      "key": "plug_changed",
+      "label": {
+        "en": "BMW: cable plugged or unplugged",
+        "fr": "BMW : câble branché ou débranché",
+        "de": "BMW: Kabel an- oder abgesteckt",
+        "es": "BMW: cable enchufado o desenchufado"
+      },
+      "description": {
+        "en": "The charging cable was plugged in or unplugged.",
+        "fr": "Le câble de charge a été branché ou débranché.",
+        "de": "Das Ladekabel wurde angesteckt oder abgezogen.",
+        "es": "El cable de carga se ha enchufado o desenchufado."
+      },
+      "fields": [
+        {
+          "key": "vehicle",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Car",
+            "fr": "Voiture",
+            "de": "Auto",
+            "es": "Coche"
+          },
+          "description": {
+            "en": "Leave empty for any car.",
+            "fr": "Laissez vide pour toutes les voitures.",
+            "de": "Leer lassen für jedes Auto.",
+            "es": "Déjelo vacío para cualquier coche."
+          },
+          "required": false
+        },
+        {
+          "key": "state",
+          "type": "select",
+          "label": {
+            "en": "Event",
+            "fr": "Événement",
+            "de": "Ereignis",
+            "es": "Evento"
+          },
+          "description": {
+            "en": "Leave empty for both.",
+            "fr": "Laissez vide pour les deux.",
+            "de": "Leer lassen für beide.",
+            "es": "Déjelo vacío para ambos."
+          },
+          "options": [
+            {
+              "value": "plugged",
+              "label": {
+                "en": "Plugged in",
+                "fr": "Branché",
+                "de": "Angesteckt",
+                "es": "Enchufado"
+              }
+            },
+            {
+              "value": "unplugged",
+              "label": {
+                "en": "Unplugged",
+                "fr": "Débranché",
+                "de": "Abgezogen",
+                "es": "Desenchufado"
+              }
+            }
+          ],
+          "required": false
+        }
+      ],
+      "variables": [
+        {
+          "key": "vehicle_name",
+          "type": "string",
+          "label": {
+            "en": "Car name",
+            "fr": "Nom de la voiture",
+            "de": "Name des Autos",
+            "es": "Nombre del coche"
+          }
+        },
+        {
+          "key": "state",
+          "type": "string",
+          "label": {
+            "en": "State",
+            "fr": "État",
+            "de": "Zustand",
+            "es": "Estado"
+          }
+        },
+        {
+          "key": "battery_level",
+          "type": "number",
+          "label": {
+            "en": "Battery (%)",
+            "fr": "Batterie (%)",
+            "de": "Batterie (%)",
+            "es": "Batería (%)"
+          }
+        },
+        {
+          "key": "summary",
+          "type": "string",
+          "label": {
+            "en": "Summary",
+            "fr": "Résumé",
+            "de": "Zusammenfassung",
+            "es": "Resumen"
+          }
+        }
+      ]
+    },
+    {
+      "key": "moving_changed",
+      "label": {
+        "en": "BMW: started or stopped driving",
+        "fr": "BMW : départ ou arrêt",
+        "de": "BMW: losgefahren oder angehalten",
+        "es": "BMW: arranca o se detiene"
+      },
+      "description": {
+        "en": "The car started moving, or stopped.",
+        "fr": "La voiture s’est mise à rouler, ou s’est arrêtée.",
+        "de": "Das Auto ist losgefahren oder hat angehalten.",
+        "es": "El coche ha empezado a moverse, o se ha detenido."
+      },
+      "fields": [
+        {
+          "key": "vehicle",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Car",
+            "fr": "Voiture",
+            "de": "Auto",
+            "es": "Coche"
+          },
+          "description": {
+            "en": "Leave empty for any car.",
+            "fr": "Laissez vide pour toutes les voitures.",
+            "de": "Leer lassen für jedes Auto.",
+            "es": "Déjelo vacío para cualquier coche."
+          },
+          "required": false
+        },
+        {
+          "key": "state",
+          "type": "select",
+          "label": {
+            "en": "Event",
+            "fr": "Événement",
+            "de": "Ereignis",
+            "es": "Evento"
+          },
+          "description": {
+            "en": "Leave empty for both.",
+            "fr": "Laissez vide pour les deux.",
+            "de": "Leer lassen für beide.",
+            "es": "Déjelo vacío para ambos."
+          },
+          "options": [
+            {
+              "value": "started",
+              "label": {
+                "en": "Started",
+                "fr": "Départ",
+                "de": "Losgefahren",
+                "es": "Arranca"
+              }
+            },
+            {
+              "value": "stopped",
+              "label": {
+                "en": "Stopped",
+                "fr": "Arrêt",
+                "de": "Angehalten",
+                "es": "Se detiene"
+              }
+            }
+          ],
+          "required": false
+        }
+      ],
+      "variables": [
+        {
+          "key": "vehicle_name",
+          "type": "string",
+          "label": {
+            "en": "Car name",
+            "fr": "Nom de la voiture",
+            "de": "Name des Autos",
+            "es": "Nombre del coche"
+          }
+        },
+        {
+          "key": "state",
+          "type": "string",
+          "label": {
+            "en": "State",
+            "fr": "État",
+            "de": "Zustand",
+            "es": "Estado"
+          }
+        },
+        {
+          "key": "summary",
+          "type": "string",
+          "label": {
+            "en": "Summary",
+            "fr": "Résumé",
+            "de": "Zusammenfassung",
+            "es": "Resumen"
+          }
+        }
+      ]
+    },
+    {
+      "key": "home_changed",
+      "label": {
+        "en": "BMW: arrived or left home",
+        "fr": "BMW : arrivée ou départ du domicile",
+        "de": "BMW: zu Hause angekommen oder weg",
+        "es": "BMW: llega o sale de casa"
+      },
+      "description": {
+        "en": "The car entered or left the home radius, around the houses of Gladys.",
+        "fr": "La voiture est entrée dans le rayon du domicile ou en est sortie, autour des maisons de Gladys.",
+        "de": "Das Auto hat den Heimradius um die Häuser von Gladys erreicht oder verlassen.",
+        "es": "El coche ha entrado o salido del radio de casa, alrededor de las casas de Gladys."
+      },
+      "fields": [
+        {
+          "key": "vehicle",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Car",
+            "fr": "Voiture",
+            "de": "Auto",
+            "es": "Coche"
+          },
+          "description": {
+            "en": "Leave empty for any car.",
+            "fr": "Laissez vide pour toutes les voitures.",
+            "de": "Leer lassen für jedes Auto.",
+            "es": "Déjelo vacío para cualquier coche."
+          },
+          "required": false
+        },
+        {
+          "key": "state",
+          "type": "select",
+          "label": {
+            "en": "Event",
+            "fr": "Événement",
+            "de": "Ereignis",
+            "es": "Evento"
+          },
+          "description": {
+            "en": "Leave empty for both.",
+            "fr": "Laissez vide pour les deux.",
+            "de": "Leer lassen für beide.",
+            "es": "Déjelo vacío para ambos."
+          },
+          "options": [
+            {
+              "value": "arrived",
+              "label": {
+                "en": "Arrived",
+                "fr": "Arrivée",
+                "de": "Angekommen",
+                "es": "Llega"
+              }
+            },
+            {
+              "value": "left",
+              "label": {
+                "en": "Left",
+                "fr": "Départ",
+                "de": "Weggefahren",
+                "es": "Sale"
+              }
+            }
+          ],
+          "required": false
+        }
+      ],
+      "variables": [
+        {
+          "key": "vehicle_name",
+          "type": "string",
+          "label": {
+            "en": "Car name",
+            "fr": "Nom de la voiture",
+            "de": "Name des Autos",
+            "es": "Nombre del coche"
+          }
+        },
+        {
+          "key": "state",
+          "type": "string",
+          "label": {
+            "en": "State",
+            "fr": "État",
+            "de": "Zustand",
+            "es": "Estado"
+          }
+        },
+        {
+          "key": "distance_km",
+          "type": "number",
+          "label": {
+            "en": "Distance from home (km)",
+            "fr": "Distance du domicile (km)",
+            "de": "Entfernung von zu Hause (km)",
+            "es": "Distancia de casa (km)"
+          }
+        },
+        {
+          "key": "summary",
+          "type": "string",
+          "label": {
+            "en": "Summary",
+            "fr": "Résumé",
+            "de": "Zusammenfassung",
+            "es": "Resumen"
+          }
+        }
+      ]
+    },
+    {
+      "key": "authorization_expired",
+      "label": {
+        "en": "BMW: sign-in to renew",
+        "fr": "BMW : connexion à renouveler",
+        "de": "BMW: Anmeldung erneuern",
+        "es": "BMW: sesión por renovar"
+      },
+      "description": {
+        "en": "The BMW sign-in expired: click Connect again in the integration.",
+        "fr": "La connexion BMW a expiré : cliquez à nouveau sur Connecter dans l’intégration.",
+        "de": "Die BMW-Anmeldung ist abgelaufen: In der Integration erneut auf Verbinden klicken.",
+        "es": "La sesión de BMW ha caducado: vuelve a pulsar Conectar en la integración."
+      },
+      "fields": [],
+      "variables": [
+        {
+          "key": "summary",
+          "type": "string",
+          "label": {
+            "en": "Summary",
+            "fr": "Résumé",
+            "de": "Zusammenfassung",
+            "es": "Resumen"
+          }
+        }
+      ]
+    }
+  ],
+  "scene_actions": [
+    {
+      "key": "get_status",
+      "label": {
+        "en": "BMW: read the status",
+        "fr": "BMW : lire l’état",
+        "de": "BMW: Status lesen",
+        "es": "BMW: leer el estado"
+      },
+      "description": {
+        "en": "The last known state of a car, for a message or a condition.",
+        "fr": "Le dernier état connu d’une voiture, pour un message ou une condition.",
+        "de": "Der letzte bekannte Zustand eines Autos, für eine Nachricht oder Bedingung.",
+        "es": "El último estado conocido de un coche, para un mensaje o una condición."
+      },
+      "timeout_seconds": 60,
+      "fields": [
+        {
+          "key": "vehicle",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Car",
+            "fr": "Voiture",
+            "de": "Auto",
+            "es": "Coche"
+          },
+          "description": {
+            "en": "Leave empty for the first car.",
+            "fr": "Laissez vide pour la première voiture.",
+            "de": "Leer lassen für das erste Auto.",
+            "es": "Déjelo vacío para el primer coche."
+          },
+          "required": false
+        },
+        {
+          "key": "refresh",
+          "type": "boolean",
+          "label": {
+            "en": "Read the car through the API first",
+            "fr": "Lire d’abord la voiture par l’API",
+            "de": "Zuerst über die API lesen",
+            "es": "Leer primero el coche por la API"
+          },
+          "description": {
+            "en": "Uses 1 of the 50 daily API calls. Off: the last values (stream).",
+            "fr": "Utilise 1 des 50 appels API du jour. Désactivé : les dernières valeurs (flux).",
+            "de": "Verbraucht 1 der 50 täglichen API-Aufrufe. Aus: die letzten Werte (Stream).",
+            "es": "Usa 1 de las 50 llamadas API diarias. Desactivado: los últimos valores (flujo)."
+          },
+          "default": false,
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "key": "battery_level",
+          "type": "number",
+          "label": {
+            "en": "Battery (%)",
+            "fr": "Batterie (%)",
+            "de": "Batterie (%)",
+            "es": "Batería (%)"
+          },
+          "description": {
+            "en": "Missing when unknown.",
+            "fr": "Absent si inconnu.",
+            "de": "Fehlt, wenn unbekannt.",
+            "es": "Ausente si se desconoce."
+          }
+        },
+        {
+          "key": "range_km",
+          "type": "number",
+          "label": {
+            "en": "Range (km)",
+            "fr": "Autonomie (km)",
+            "de": "Reichweite (km)",
+            "es": "Autonomía (km)"
+          },
+          "description": {
+            "en": "Missing when unknown.",
+            "fr": "Absent si inconnu.",
+            "de": "Fehlt, wenn unbekannt.",
+            "es": "Ausente si se desconoce."
+          }
+        },
+        {
+          "key": "fuel_level",
+          "type": "number",
+          "label": {
+            "en": "Fuel level (%)",
+            "fr": "Niveau de carburant (%)",
+            "de": "Tankfüllstand (%)",
+            "es": "Nivel de combustible (%)"
+          },
+          "description": {
+            "en": "Missing when unknown.",
+            "fr": "Absent si inconnu.",
+            "de": "Fehlt, wenn unbekannt.",
+            "es": "Ausente si se desconoce."
+          }
+        },
+        {
+          "key": "charging_status",
+          "type": "string",
+          "label": {
+            "en": "Charging status (code)",
+            "fr": "État de charge (code)",
+            "de": "Ladestatus (Code)",
+            "es": "Estado de carga (código)"
+          },
+          "description": {
+            "en": "charging, paused, finished, not_charging…",
+            "fr": "charging, paused, finished, not_charging…",
+            "de": "charging, paused, finished, not_charging…",
+            "es": "charging, paused, finished, not_charging…"
+          }
+        },
+        {
+          "key": "plugged",
+          "type": "boolean",
+          "label": {
+            "en": "Cable plugged in",
+            "fr": "Câble branché",
+            "de": "Kabel angesteckt",
+            "es": "Cable enchufado"
+          },
+          "description": {
+            "en": "Missing when unknown.",
+            "fr": "Absent si inconnu.",
+            "de": "Fehlt, wenn unbekannt.",
+            "es": "Ausente si se desconoce."
+          }
+        },
+        {
+          "key": "locked",
+          "type": "boolean",
+          "label": {
+            "en": "Locked",
+            "fr": "Verrouillée",
+            "de": "Verriegelt",
+            "es": "Bloqueado"
+          },
+          "description": {
+            "en": "Missing when unknown.",
+            "fr": "Absent si inconnu.",
+            "de": "Fehlt, wenn unbekannt.",
+            "es": "Ausente si se desconoce."
+          }
+        },
+        {
+          "key": "open_list",
+          "type": "string",
+          "label": {
+            "en": "What is open",
+            "fr": "Ce qui est ouvert",
+            "de": "Was offen ist",
+            "es": "Qué está abierto"
+          },
+          "description": {
+            "en": "Empty when all is closed.",
+            "fr": "Vide si tout est fermé.",
+            "de": "Leer, wenn alles zu ist.",
+            "es": "Vacío si todo está cerrado."
+          }
+        },
+        {
+          "key": "at_home",
+          "type": "boolean",
+          "label": {
+            "en": "At home",
+            "fr": "Au domicile",
+            "de": "Zu Hause",
+            "es": "En casa"
+          },
+          "description": {
+            "en": "Missing when unknown.",
+            "fr": "Absent si inconnu.",
+            "de": "Fehlt, wenn unbekannt.",
+            "es": "Ausente si se desconoce."
+          }
+        },
+        {
+          "key": "distance_home_km",
+          "type": "number",
+          "label": {
+            "en": "Distance from home (km)",
+            "fr": "Distance du domicile (km)",
+            "de": "Entfernung von zu Hause (km)",
+            "es": "Distancia de casa (km)"
+          },
+          "description": {
+            "en": "Missing when unknown.",
+            "fr": "Absent si inconnu.",
+            "de": "Fehlt, wenn unbekannt.",
+            "es": "Ausente si se desconoce."
+          }
+        },
+        {
+          "key": "odometer_km",
+          "type": "number",
+          "label": {
+            "en": "Mileage (km)",
+            "fr": "Kilométrage (km)",
+            "de": "Kilometerstand (km)",
+            "es": "Kilometraje (km)"
+          },
+          "description": {
+            "en": "Missing when unknown.",
+            "fr": "Absent si inconnu.",
+            "de": "Fehlt, wenn unbekannt.",
+            "es": "Ausente si se desconoce."
+          }
+        },
+        {
+          "key": "summary",
+          "type": "string",
+          "label": {
+            "en": "Summary",
+            "fr": "Résumé",
+            "de": "Zusammenfassung",
+            "es": "Resumen"
+          }
+        }
+      ]
+    }
+  ]
+}
