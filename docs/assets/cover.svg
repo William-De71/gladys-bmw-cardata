@@ -1,50 +1,71 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="534" viewBox="0 0 800 534">
-  <!-- Cover of the BMW CarData integration for Gladys Assistant (illustration,
-       no BMW logo). Built into cover.jpg by scripts/build-cover.sh. -->
+  <!-- Cover of the BMW CarData integration for Gladys Assistant: the brand name in
+       plain text (never the BMW logo) and what the integration reads.
+       Built into cover.jpg by scripts/build-cover.sh. -->
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0b1626"/>
-      <stop offset="1" stop-color="#14304f"/>
-    </linearGradient>
-    <linearGradient id="car" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#3a7bd5"/>
-      <stop offset="1" stop-color="#1c4f96"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#4fa3ff" stop-opacity="0.35"/>
-      <stop offset="1" stop-color="#4fa3ff" stop-opacity="0"/>
+    <radialGradient id="sky" cx="400" cy="250" r="520" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1d4f7e"/>
+      <stop offset="0.55" stop-color="#0f2742"/>
+      <stop offset="1" stop-color="#070f1c"/>
     </radialGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#14304f"/>
+      <stop offset="1" stop-color="#060d18"/>
+    </linearGradient>
+    <linearGradient id="horizon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6cc4ff" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#9ad8ff" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#6cc4ff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="charge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22c55e"/>
+      <stop offset="1" stop-color="#86efac"/>
+    </linearGradient>
   </defs>
-  <rect width="800" height="534" fill="url(#bg)"/>
-  <g stroke="#1b3352" stroke-width="1">
-    <path d="M0 89 H800 M0 178 H800 M0 267 H800 M0 356 H800 M0 445 H800"/>
-    <path d="M100 0 V534 M200 0 V534 M300 0 V534 M400 0 V534 M500 0 V534 M600 0 V534 M700 0 V534"/>
+  <rect width="800" height="534" fill="url(#sky)"/>
+  <rect y="430" width="800" height="104" fill="url(#floor)"/>
+  <g stroke="#5aa9e6" stroke-opacity="0.13" stroke-width="1" fill="none">
+    <path d="M400 430 L-200 534 M400 430 L0 534 M400 430 L200 534 M400 430 L400 534
+             M400 430 L600 534 M400 430 L800 534 M400 430 L1000 534"/>
+    <path d="M0 446 H800 M0 470 H800 M0 502 H800"/>
   </g>
-  <ellipse cx="400" cy="270" rx="300" ry="170" fill="url(#glow)"/>
-  <!-- cloud and stream -->
-  <g transform="translate(400 92)" fill="#1d3a5f" stroke="#7fb8ff" stroke-width="4">
-    <path d="M-70 20 a32 32 0 0 1 10 -62 a44 44 0 0 1 84 -8 a34 34 0 0 1 46 50 a20 20 0 0 1 -10 20 z"/>
-  </g>
-  <g fill="none" stroke="#58c98b" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 13">
-    <path d="M400 130 V205"/>
-  </g>
-  <!-- the car, side view -->
-  <g transform="translate(400 300)">
-    <path d="M-230 40 C-230 10 -215 -5 -185 -10 L-120 -20 C-90 -60 -55 -78 0 -80 C60 -80 100 -62 135 -22 L200 -12 C222 -8 232 8 232 30 L232 48 L-230 48 Z" fill="url(#car)" stroke="#9cc8ff" stroke-width="3" stroke-linejoin="round"/>
-    <path d="M-105 -22 C-80 -55 -50 -68 -5 -69 L-5 -22 Z" fill="#cfe4ff" opacity="0.85"/>
-    <path d="M7 -69 C55 -68 88 -52 115 -22 L7 -22 Z" fill="#cfe4ff" opacity="0.85"/>
-    <g fill="#0e1a2b" stroke="#9cc8ff" stroke-width="4">
-      <circle cx="-140" cy="50" r="36"/>
-      <circle cx="140" cy="50" r="36"/>
+  <rect x="40" y="429" width="720" height="2" fill="url(#horizon)"/>
+
+  <text x="403" y="196" text-anchor="middle" font-family="Inter, DejaVu Sans, Arial, sans-serif"
+        font-size="84" font-weight="800" letter-spacing="6" fill="#ffffff">BMW CarData</text>
+  <rect x="360" y="228" width="80" height="4" rx="2" fill="#4fb3ff"/>
+  <text x="400" y="276" text-anchor="middle" font-family="Inter, DejaVu Sans, Arial, sans-serif"
+        font-size="30" font-weight="500" letter-spacing="1" fill="#a9c8e8">for Gladys Assistant</text>
+
+  <g font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="600" fill="#ffffff">
+    <g transform="translate(78 336)">
+      <rect width="148" height="44" rx="22" fill="#ffffff" fill-opacity="0.08" stroke="#ffffff" stroke-opacity="0.2"/>
+      <path d="M30 11 C22 11 18 17 18 22 C18 29 30 36 30 36 C30 36 42 29 42 22 C42 17 38 11 30 11 Z" fill="#4fb3ff"/>
+      <circle cx="30" cy="22" r="4" fill="#0f2742"/>
+      <text x="54" y="29">412 km</text>
     </g>
-    <g fill="#5d6b80"><circle cx="-140" cy="50" r="13"/><circle cx="140" cy="50" r="13"/></g>
-    <!-- battery gauge -->
-    <g transform="translate(-40 -2)">
-      <rect x="0" y="0" width="80" height="30" rx="5" fill="#0e1a2b" stroke="#e8f1ff" stroke-width="3"/>
-      <rect x="80" y="9" width="7" height="12" rx="2" fill="#e8f1ff"/>
-      <rect x="5" y="5" width="48" height="20" rx="3" fill="#58c98b"/>
+    <g transform="translate(246 336)">
+      <rect width="172" height="44" rx="22" fill="#ffffff" fill-opacity="0.08" stroke="#ffffff" stroke-opacity="0.2"/>
+      <rect x="18" y="14" width="34" height="16" rx="4" fill="none" stroke="#ffffff" stroke-width="2"/>
+      <rect x="52" y="19" width="3" height="6" rx="1" fill="#ffffff"/>
+      <rect x="21" y="17" width="23" height="10" rx="2" fill="url(#charge)"/>
+      <text x="68" y="29">80 %</text>
+      <path d="M150 12 L140 24 H147 L143 33 L154 20 H147 Z" fill="#facc15"/>
+    </g>
+    <g transform="translate(438 336)">
+      <rect width="160" height="44" rx="22" fill="#ffffff" fill-opacity="0.08" stroke="#ffffff" stroke-opacity="0.2"/>
+      <g transform="translate(34 22)" stroke="#7dd3fc" stroke-width="2.2" stroke-linecap="round" fill="none">
+        <path d="M0 -11 V11 M-9.5 -5.5 L9.5 5.5 M-9.5 5.5 L9.5 -5.5"/>
+        <path d="M-3 -9 L0 -6 L3 -9 M-3 9 L0 6 L3 9"/>
+      </g>
+      <text x="58" y="29">21 °C</text>
+    </g>
+    <g transform="translate(618 336)">
+      <rect width="104" height="44" rx="22" fill="#ffffff" fill-opacity="0.08" stroke="#ffffff" stroke-opacity="0.2"/>
+      <path d="M24 20 V16 A8 8 0 0 1 40 16 V20" fill="none" stroke="#ffffff" stroke-width="2.4"/>
+      <rect x="20" y="20" width="24" height="16" rx="4" fill="#ffffff"/>
+      <circle cx="32" cy="28" r="2.5" fill="#0f2742"/>
+      <path d="M58 22 L65 29 L80 14" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
     </g>
   </g>
-  <text x="400" y="430" fill="#ffffff" font-family="DejaVu Sans, Arial, sans-serif" font-size="46" font-weight="bold" text-anchor="middle">BMW CarData</text>
-  <text x="400" y="472" fill="#9cc8ff" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" text-anchor="middle">for Gladys Assistant</text>
 </svg>
