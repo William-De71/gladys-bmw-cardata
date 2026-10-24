@@ -5,6 +5,12 @@ follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions
 follow [Semantic Versioning](https://semver.org/). This file is generated at
 each release from the Conventional Commits: do not edit it by hand.
 
+## [0.1.1] - 2026-10-24
+
+### Security
+
+- **security:** build the image on Node.js 24.22.1 or later ([2953c2b](https://github.com/William-De71/gladys-bmw-cardata/commit/2953c2bee1ec978e56d155c3eacea060796d2e5b))
+
 ## [0.1.0] - 2026-10-16
 
 ### Added
@@ -19,4 +25,5 @@ each release from the Conventional Commits: do not edit it by hand.
 - Cloud transport, with a degraded badge on the cars while the stream is down.
 - English, French, German and Spanish everywhere: settings, devices, widgets, scenes and documentation.
 
+[0.1.1]: https://github.com/William-De71/gladys-bmw-cardata/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/William-De71/gladys-bmw-cardata/releases/tag/v0.1.0
