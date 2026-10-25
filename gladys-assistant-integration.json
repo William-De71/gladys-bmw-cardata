@@ -8,8 +8,8 @@
     "de": "BMW- und MINI-Autos: Batterie, Reichweite, Laden, Türen, Position, Szenen (CarData).",
     "es": "Coches BMW y MINI: batería, autonomía, carga, puertas, posición, escenas (CarData)."
   },
-  "version": "0.2.0",
-  "docker_image": "ghcr.io/william-de71/gladys-bmw-cardata:0.2.0",
+  "version": "0.3.0",
+  "docker_image": "ghcr.io/william-de71/gladys-bmw-cardata:0.3.0",
   "gladys_version": ">=5.3.0",
   "categories": ["vehicles"],
   "keywords": [
