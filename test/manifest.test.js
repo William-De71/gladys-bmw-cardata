@@ -43,7 +43,7 @@ test('declares the cloud transport only, and only the location permission (house
   for (const key of ['network_wake', 'containers', 'network_discovery', 'webhooks']) {
     assert.equal(manifest[key], undefined, key);
   }
-  assert.equal(manifest.gladys_version, '>=5.1.1');
+  assert.equal(manifest.gladys_version, '>=5.3.0');
   assert.doesNotMatch(source('../src/widgets.js'), /fields:/, 'a button form needs Gladys 5.2.0');
 });
 
@@ -134,4 +134,16 @@ test('no BMW host other than the documented ones in the code', () => {
     'customer.bmwgroup.com',
     'www.openstreetmap.org',
   ]);
+});
+
+test('catalog of Gladys 5.3.0: search keywords within the store bounds, countries', () => {
+  const { keywords } = manifest;
+  assert.ok(Array.isArray(keywords) && keywords.length >= 1 && keywords.length <= 10);
+  const normalized = keywords.map((keyword) => keyword.trim().toLowerCase());
+  for (const keyword of normalized) {
+    assert.ok(keyword.length >= 2 && keyword.length <= 30, keyword);
+  }
+  assert.equal(new Set(normalized).size, normalized.length, 'unique once trimmed and lowercased');
+  assert.ok(!normalized.includes(manifest.name.toLowerCase()), 'never the name itself');
+  assert.equal(manifest.countries, undefined, 'usable worldwide: no country list');
 });

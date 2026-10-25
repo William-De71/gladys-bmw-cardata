@@ -13,7 +13,7 @@ Diese Integration bringt deine **BMW- und MINI-Fahrzeuge** über **BMW CarData**
 
 ## Voraussetzungen
 
-- Gladys **5.1.1** oder neuer.
+- Gladys **5.3.0** oder neuer.
 - Ein Auto mit aktivem ConnectedDrive-/MINI-Connected-Vertrag in einem unterstützten (europäischen) Markt, in deinem MyBMW-Konto, dessen **Hauptnutzer du bist** (CarData liefert Zweitnutzern keine Daten).
 - Eine **CarData-Client-ID**: Öffne im MyBMW- (oder MINI-) Webportal dein Auto → **BMW CarData** → **CarData-Client erstellen** und aktiviere **beide** Abos, **CarData API** und **CarData Stream**. Eine Client-ID ohne Abos liefert Tokens, die nicht funktionieren.
 - Der **konfigurierte Datenstream**: Auf derselben Seite **Datenstream konfigurieren**, die gewünschten Daten auswählen (Batterie, Türen, Fenster, Position, Reifen…) und speichern. BMW streamt nur, was dort ausgewählt ist.

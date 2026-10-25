@@ -5,7 +5,7 @@
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Latest release](https://img.shields.io/github/v/release/William-De71/gladys-bmw-cardata?sort=semver)](https://github.com/William-De71/gladys-bmw-cardata/releases)
 [![CI](https://img.shields.io/github/actions/workflow/status/William-De71/gladys-bmw-cardata/release.yml?branch=main&label=CI)](https://github.com/William-De71/gladys-bmw-cardata/actions/workflows/release.yml)
-[![Gladys](https://img.shields.io/badge/Gladys-%E2%89%A5%205.1.1-2f6fb5)](https://gladysassistant.com)
+[![Gladys](https://img.shields.io/badge/Gladys-%E2%89%A5%205.3.0-2f6fb5)](https://gladysassistant.com)
 
 ![BMW CarData for Gladys Assistant](cover.jpg)
 
@@ -89,7 +89,7 @@ Not implemented: commands (CarData has none), the charging history, tyre diagnos
 
 ## Requirements
 
-- Gladys **5.1.1** or later (older versions cannot install the integration: widgets and scenes).
+- Gladys **5.3.0** or later (older versions cannot install the integration: catalog keywords and countries, widgets and scenes).
 - A BMW or MINI car in Europe, of which you are the primary user, with ConnectedDrive.
 - A CarData client ID with **both** subscriptions (API and Stream) and a configured data stream (see the [documentation](docs/en.md#prerequisites)).
 
